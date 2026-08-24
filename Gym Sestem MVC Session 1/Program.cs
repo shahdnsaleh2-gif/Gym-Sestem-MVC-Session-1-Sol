@@ -1,3 +1,7 @@
+using Gym_Sestem.DAL.Contexts;
+using Gym_Sestem.DAL.Repositories.Classes;
+using Gym_Sestem.DAL.Repositories.Interfaces;
+
 namespace Gym_Sestem_MVC_Session_1
 {
     public class Program
@@ -8,6 +12,8 @@ namespace Gym_Sestem_MVC_Session_1
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<GymDbContext>();
+            builder.Services.AddScoped<IPlanRepository, PlanRepository>();
 
             var app = builder.Build();
 
