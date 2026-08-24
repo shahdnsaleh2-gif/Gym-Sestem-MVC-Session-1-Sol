@@ -1,4 +1,4 @@
-﻿using Gym_Sestem_MVC_Session_1.Context;
+﻿using Gym_Sestem.DAL.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
@@ -7,24 +7,21 @@ namespace Gym_Sestem_MVC_Session_1.Controllers
 {
     public class PlanController : Controller
     {
-
-        private readonly GymDbContext dbcontext = new GymDbContext();
-        public async Task<IActionResult> Index()
+        private readonly IPlanRepository planRepository;
+        public PlanController(IPlanRepository _planRepository)
         {
-            var plans = await dbcontext.Plans.ToListAsync();
-
+            planRepository = _planRepository;
+        }
+        public async Task<IActionResult> Index(CancellationToken token)
+        {
+            var plans = await planRepository.GetAll(false, token);
             return View(plans);
         }
-
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Details(int id, CancellationToken token)
         {
-            var plan = await dbcontext.Plans.FirstOrDefaultAsync(p => p.Id == id);
-
+            var plan = await planRepository.GetById(id, token);
             if (plan == null)
-            {
                 RedirectToAction(nameof(Index));
-            }
-
             return View(plan);
         }
     }
