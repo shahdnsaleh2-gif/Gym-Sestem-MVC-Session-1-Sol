@@ -1,0 +1,91 @@
+﻿@model MemberViewModel
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-7">
+            <div class="card shadow-lg border-0">
+                <div class="card-header text-white text-center py-5 bg-primary-color">
+                    <img src="@(string.IsNullOrEmpty(Model.Photo) ? "/images/logo.jpg" : Model.Photo)"
+                         alt="@Model.Name" width="80" height="80" class="rounded-circle mb-2" />
+                    <h2 class="mb-0">@Model.Name</h2>
+                </div>
+                <div class="card-body p-4">
+                    <div class="row g-3 mb-4">
+                        <div class="col-6">
+                            <h6 class="text-muted mb-0"><i class="bi bi-envelope me-1"></i>Email</h6>
+                            <p class="fw-bold">@Model.Email</p>
+                        </div>
+                        <div class="col-6">
+                            <h6 class="text-muted mb-0"><i class="bi bi-telephone me-1"></i>Phone</h6>
+                            <p class="fw-bold">@Model.Phone</p>
+                        </div>
+                        <div class="col-6">
+                            <h6 class="text-muted mb-0"><i class="bi bi-gender-ambiguous me-1"></i>Gender</h6>
+                            <p class="fw-bold">@Model.Gender</p>
+                        </div>
+                        <div class="col-6">
+                            <h6 class="text-muted mb-0"><i class="bi bi-calendar me-1"></i>Date Of Birth</h6>
+                            <p class="fw-bold">@Model.DateOfBirth</p>
+                        </div>
+                        <div class="col-12">
+                            <h6 class="text-muted mb-0"><i class="bi bi-house me-1"></i>Address</h6>
+                            <p class="fw-bold">@Model.Address</p>
+                        </div>
+                    </div>
+
+                    <hr />
+                    <h5 class="text-primary-color"><i class="bi bi-heart-pulse me-1"></i>Health Record</h5>
+                    <div class="row g-3 mb-4">
+                        <div class="col-4">
+                            <h6 class="text-muted mb-0">Height</h6>
+                            <p class="fw-bold">@Model.Height cm</p>
+                        </div>
+                        <div class="col-4">
+                            <h6 class="text-muted mb-0">Weight</h6>
+                            <p class="fw-bold">@Model.Weight kg</p>
+                        </div>
+                        <div class="col-4">
+                            <h6 class="text-muted mb-0">Blood Type</h6>
+                            <p class="fw-bold">@Model.BloodType</p>
+                        </div>
+                        @if (!string.IsNullOrEmpty(Model.Note))
+                        {
+                            <div class="col-12">
+                                <h6 class="text-muted mb-0">Note</h6>
+                                <p class="fw-bold">@Model.Note</p>
+                            </div>
+                        }
+                    </div>
+
+                    <hr />
+                    <h5 class="text-primary-color"><i class="bi bi-card-checklist me-1"></i>Membership</h5>
+                    @if (Model.PlanName is not null)
+                    {
+                        <div class="row g-3">
+                            <div class="col-4">
+                                <h6 class="text-muted mb-0">Plan</h6>
+                                <p class="fw-bold">@Model.PlanName</p>
+                            </div>
+                            <div class="col-4">
+                                <h6 class="text-muted mb-0">Start Date</h6>
+                                <p class="fw-bold">@Model.MembershipStartDate</p>
+                            </div>
+                            <div class="col-4">
+                                <h6 class="text-muted mb-0">End Date</h6>
+                                <p class="fw-bold">@Model.MembershipEndDate</p>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-muted">This member has no membership yet.</p>
+                    }
+                </div>
+                <div class="card-footer bg-white border-0 p-4">
+                    <a asp-action="Index" class="btn btn-outline">
+                        <i class="bi bi-arrow-left me-1"></i>Back to List
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

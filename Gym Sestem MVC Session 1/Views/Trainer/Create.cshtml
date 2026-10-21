@@ -1,0 +1,82 @@
+﻿@model CreateTrainerViewModel
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="text-primary-color mb-4">Add New Trainer</h2>
+
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+            <form asp-action="Create" method="post">
+                <h6 class="text-muted text-uppercase mb-3">Personal Information</h6>
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="Name" class="form-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Email" class="form-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Phone" class="form-label"></label>
+                        <input asp-for="Phone" class="form-control" placeholder="01xxxxxxxxx" />
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="DateOfBirth" class="form-label"></label>
+                        <input asp-for="DateOfBirth" class="form-control" />
+                        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Gender" class="form-label"></label>
+                        <select asp-for="Gender" class="form-select" asp-items="Html.GetEnumSelectList<Gender>()">
+                            <option value="">-- Select Gender --</option>
+                        </select>
+                        <span asp-validation-for="Gender" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Specialty" class="form-label"></label>
+                        <select asp-for="Specialty" class="form-select" asp-items="Html.GetEnumSelectList<Specialties>()">
+                            <option value="">-- Select Specialty --</option>
+                        </select>
+                        <span asp-validation-for="Specialty" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <h6 class="text-muted text-uppercase mb-3">Address Information</h6>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label asp-for="BuildingNumber" class="form-label"></label>
+                        <input asp-for="BuildingNumber" class="form-control" />
+                        <span asp-validation-for="BuildingNumber" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-4">
+                        <label asp-for="Street" class="form-label"></label>
+                        <input asp-for="Street" class="form-control" />
+                        <span asp-validation-for="Street" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-4">
+                        <label asp-for="City" class="form-label"></label>
+                        <input asp-for="City" class="form-control" />
+                        <span asp-validation-for="City" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="d-flex gap-2 mt-4">
+                    <button type="submit" class="btn btn-primary-color">
+                        <i class="bi bi-check-circle me-1"></i>Save Trainer
+                    </button>
+                    <a asp-action="Index" class="btn btn-outline">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

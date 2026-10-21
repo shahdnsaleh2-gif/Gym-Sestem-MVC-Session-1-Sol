@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36915.13 d17.14
+VisualStudioVersion = 17.14.36915.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gym Sestem MVC Session 1", "Gym Sestem MVC Session 1\Gym Sestem MVC Session 1.csproj", "{18442FA2-9565-4A63-8FF7-C9BD0CC8F1D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gym Sestem.DAL", "Gym Sestem.DAL\Gym Sestem.DAL.csproj", "{E77B792A-5F4E-446D-9AFC-1766AF8CCAAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gym Sestem.BLL", "Gym Sestem.BLL\Gym Sestem.BLL.csproj", "{12DADC79-341E-4331-AEE2-D5574E9983FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{18442FA2-9565-4A63-8FF7-C9BD0CC8F1D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18442FA2-9565-4A63-8FF7-C9BD0CC8F1D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18442FA2-9565-4A63-8FF7-C9BD0CC8F1D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E77B792A-5F4E-446D-9AFC-1766AF8CCAAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E77B792A-5F4E-446D-9AFC-1766AF8CCAAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E77B792A-5F4E-446D-9AFC-1766AF8CCAAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E77B792A-5F4E-446D-9AFC-1766AF8CCAAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12DADC79-341E-4331-AEE2-D5574E9983FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12DADC79-341E-4331-AEE2-D5574E9983FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12DADC79-341E-4331-AEE2-D5574E9983FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12DADC79-341E-4331-AEE2-D5574E9983FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

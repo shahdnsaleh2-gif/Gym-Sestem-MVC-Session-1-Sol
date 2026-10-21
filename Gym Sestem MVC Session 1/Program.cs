@@ -1,3 +1,10 @@
+using Gym_Sestem.BLL.Services.Classes;
+using Gym_Sestem.BLL.Services.Interfaces;
+using Gym_Sestem.DAL.Contexts;
+using Gym_Sestem.DAL.Repositories.Classes;
+using Gym_Sestem.DAL.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
+
 namespace Gym_Sestem_MVC_Session_1
 {
     public class Program
@@ -8,6 +15,23 @@ namespace Gym_Sestem_MVC_Session_1
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<GymDbContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+            });
+
+            //builder.Services.AddScoped<IPlanRepository, PlanRepository>();
+            builder.Services.AddScoped<IPlanRepository, PlanRepository>();
+            builder.Services.AddScoped<IMemberRepository, MemberRepository>();
+            builder.Services.AddScoped<ITrainerRepository, TrainerRepository>();
+
+            builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
+
+            builder.Services.AddScoped<IPlanService, PlanService>();
+            builder.Services.AddScoped<IMemberService, MemberService>();
+            builder.Services.AddScoped<ITrainerService, TrainerService>();
+
 
             var app = builder.Build();
 

@@ -1,0 +1,70 @@
+﻿@model TrainerToUpdateViewModel
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-7">
+            <h2 class="text-primary-color mb-4">Edit Trainer</h2>
+
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+            <form asp-action="Edit" asp-route-id="@Model.Id" method="post">
+                <input type="hidden" asp-for="Id" />
+
+                <div class="alert alert-light border">
+                    <i class="bi bi-lock me-1"></i>
+                    Editing Profile For <strong>@Model.Name</strong> — Name, Gender and Date of Birth are locked and cannot be changed after registration.
+                </div>
+
+                <h6 class="text-muted text-uppercase mb-3">Contact & Specialty</h6>
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <label asp-for="Email" class="form-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Phone" class="form-label"></label>
+                        <input asp-for="Phone" class="form-control" />
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Specialty" class="form-label"></label>
+                        <select asp-for="Specialty" class="form-select" asp-items="Html.GetEnumSelectList<Specialties>()"></select>
+                        <span asp-validation-for="Specialty" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <h6 class="text-muted text-uppercase mb-3">Address</h6>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label asp-for="BuildingNumber" class="form-label"></label>
+                        <input asp-for="BuildingNumber" class="form-control" />
+                        <span asp-validation-for="BuildingNumber" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-4">
+                        <label asp-for="Street" class="form-label"></label>
+                        <input asp-for="Street" class="form-control" />
+                        <span asp-validation-for="Street" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-4">
+                        <label asp-for="City" class="form-label"></label>
+                        <input asp-for="City" class="form-control" />
+                        <span asp-validation-for="City" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="d-flex gap-2 mt-4">
+                    <button type="submit" class="btn btn-primary-color">
+                        <i class="bi bi-check-circle me-1"></i>Save Changes
+                    </button>
+                    <a asp-action="Index" class="btn btn-outline">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
