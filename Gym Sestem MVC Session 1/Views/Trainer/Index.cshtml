@@ -1,0 +1,67 @@
+﻿@model IEnumerable<TrainerViewModel>
+<div class="container">
+    <header class="d-flex justify-content-between mt-5 mb-4 align-items-center">
+        <div>
+            <h2 class="text-primary-color mb-0">Trainers</h2>
+            <p class="text-muted">Manage professional instructors</p>
+        </div>
+        <a asp-action="Create" class="btn btn-primary-color">
+            <i class="bi bi-plus-circle me-1"></i>Add Trainer
+        </a>
+    </header>
+
+    @if (TempData["Success"] is not null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+    @if (TempData["Error"] is not null)
+    {
+        <div class="alert alert-danger">@TempData["Error"]</div>
+    }
+
+    @if (Model is not null && Model.Any())
+    {
+        <div class="table-responsive">
+            <table class="table align-middle table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Specialization</th>
+                        <th class="text-end">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var trainer in Model)
+                    {
+                        <tr>
+                            <td>@trainer.Name</td>
+                            <td>@trainer.Email</td>
+                            <td>@trainer.Phone</td>
+                            <td><span class="badge bg-primary-color">@trainer.Specialty</span></td>
+                            <td class="text-end">
+                                <a asp-action="Details" asp-route-id="@trainer.Id" class="btn btn-sm btn-outline" title="Details">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+                                <a asp-action="Edit" asp-route-id="@trainer.Id" class="btn btn-sm btn-outline" title="Edit">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@trainer.Id" class="btn btn-sm btn-outline-danger" title="Delete">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="text-center py-5">
+            <i class="bi bi-person-badge display-1 text-muted"></i>
+            <h4 class="mt-3 text-muted">No Trainers Yet</h4>
+        </div>
+    }
+</div>
